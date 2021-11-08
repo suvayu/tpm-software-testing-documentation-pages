@@ -1,0 +1,211 @@
+Writing documentation with Sphinx
+=================================
+
+Introduction
+------------
+`Sphinx <https://www.sphinx-doc.org>`_ is a *documentation generator*, i.e.,
+a tool that takes a set of plain text source files and can produce various output formats (e.g. HTML, LaTeX),
+while automatically producing cross-references, indices, tables, etc.
+
+In this workshop, we will focus on using Sphinx to produce documentation in the form of webpages (HTML).
+We will use reStructuredText (.rst) as the input format, which is the default and most commonly used.
+
+Sphinx is "Python-based", in the sense that it is:
+
+* Written in Python
+* **Configurable** in Python
+* Easily *aware* of Python-specific features (syntax, etc.)
+
+Therefore Sphinx is very popular for generating the documentation of Python projects, and this is why we use it in this workshop.
+But of course it can just be used as a way to build documentation for any project.
+
+We will learn the basics of using Sphinx for writing two sorts of documentation:
+
+* Usage/installation guides
+* API documentation
+
+Installing Sphinx for a project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As always, it is recommended to install all libraries and tools related to a Python project in a *virtual environment* exclusive to that project.
+Furthermore, it's useful to separate between the dependencies that are needed to simply **run** a project, and those needed to **develop** it.
+The documentation generator (Sphinx) is a development dependency.
+
+In this workshop, we manage virtual environments simply with the built-in ``venv`` module from Python 3,
+and we declare our dependencies as ``requirements.txt`` files, that are passed to ``pip`` (running in the active virtual env).
+What it boils down to in practice is that we need at least two requirements files in the project root:
+
+* ``requirements.txt`` for the *runtime* dependencies (what is needed to run the program/library)
+* ``requirements-dev.txt`` for the *development* dependencies (among other things, to build documentation)
+
+Besides the basic Sphinx package, we also use the very popular `"Read The Docs" theme <https://github.com/readthedocs/sphinx_rtd_theme>`_.
+
+To make use of Sphinx for building documentation in a project, follow these steps:
+
+1. Copy the :download:`example requirements-dev file </code-excerpts/requirements-dev.txt>` to the root of your project folder
+2. Create a fresh virtual environment dedicated for building docs of that project. For example:
+
+   .. code-block:: bash
+
+       python -m venv ~/.virtualenvs/my-project-docs
+
+3. Activate this new virtual environment and install the requirements with ``pip``:
+
+   .. code-block:: bash
+
+       cd <my-project-root-path>
+       bash
+       source ~/.virtualenvs/my-project-docs/bin/activate
+       pip install -r requirements-dev.txt
+
+
+Simple pages: usage/install guides
+----------------------------------
+Every software project should have **at least** some sort of instructions on how to install it or set it up.
+For example, you may tell your users to just obtain your package using pip (Python),
+or to download from a (private) repository (Linux).
+
+Furthermore it is always useful to have instructions on how to set up the **development environment**,
+in case someone else wants to **contribute** to your project. This may involve writing down:
+
+* Which dependency management tool you used (for Python: pure pip, conda, poetry, etc.)
+* What (external) dependencies are needed for developing the project and how to install them
+* How to run the project's tests and how to build the projects docs
+
+Software packaging and setting up reproducible development environments is a topic that deserves a workshop on its own,
+so here we only give short and simple examples of how you could write this type of documentation,
+and you can apply it to your own work.
+
+We recommend having *separate* source code and documentation *subdirectories* under the root of your project, like so:
+
+.. code-block:: none
+
+   <project-root>
+     src/
+     tests/
+     docs/
+     requirements.txt
+     requirements-dev.txt
+
+Inside this ``docs`` subdirectory, we can the nice ``sphinx-quickstart`` command to create a skeleton configuration file
+and skeleton directory structure by asking us some questions:
+
+.. code-block:: bash
+
+   cd docs/
+   sphinx-quickstart
+   # answer the questions asked...
+   make html
+
+When asked whether you want to separate ``source`` and ``build`` directories, say yes.
+Then we can easily ensure that the built documentation will stay out of version control (never version-control generated artifacts).
+
+.. code-block:: bash
+
+   echo "build/" >> .gitignore
+
+If you wish to use the popular *"Read the Docs"* theme in your pages, adjust the newly-created ``source/conf.py`` file to contain the following:
+
+.. code-block:: python
+
+   extensions = [
+       ...
+       'sphinx_rtd_theme',
+   ]
+
+   html_theme = 'sphinx_rtd_theme'
+
+Because we typed ``make html``, we can now access the documentation of the project by browsing the file ``build/html/index.html``,
+but of course it's pretty empty... Now the real work can begin, describe what your project does, how to install/run it,
+and how to contribute to it (development environment and contribution guidelines).
+
+As a starting point, we can use the :ref:`example usage/install documentation <simple-usage-install-docs>` we discussed in the previous section.
+
+
+API docs from comments
+----------------------
+One kind of documentation which is made *much more convenient* by tools like Sphinx is `API <https://en.wikipedia.org/wiki/API>`_ documentation.
+This is documentation that comes together with a software library and teaches the *users of the library (other programmers)* how to use it.
+The **interface** of a library is made of definitions that can be imported and are visible to the outside world, such as:
+
+* (Public) functions
+* Classes and other types (enums, typed dicts, etc.)
+* Constant values
+
+We must document all of these relevant interface items, and ensure that the *latest documentation matches the latest code*.
+If we **keep definitions together with their respective documentation**, then we are **less likely to forget updating** one when updating the other.
+
+Sphinx can help us build API docs from comments placed near (above/below) definitions of functions, classes, modules, etc.
+To achive this, we use the ``autodoc`` extension (`full documentation <https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#module-sphinx.ext.autodoc>`_).
+The first step is to enable the extension in our ``conf.py`` file:
+
+.. code-block:: python
+
+   extensions = [
+       ...
+       'sphinx.ext.autodoc'
+   ]
+
+When we run Sphinx with ``autodoc`` enabled, and if finds references to items (functions, classes, etc.), it will try to **import** those items.
+Thus we need to add the appropriate directories to ``sys.path`` in ``conf.py``.
+For example, if you follow the project directory structure suggested above (with ``doc`` and ``src`` folders),
+you can add the source folder to ``sys.path`` by having the following code on the top of ``conf.py`` (we use the very nice ``pathlib``):
+
+.. code-block:: python
+
+   import sys
+   from pathlib import Path
+
+   projroot = Path(__file__).resolve().parent.parent.parent  # <this_file>/../../../
+   srcdir = projroot / 'src'
+   sys.path.insert(0, str(srcdir))
+
+After this setup, there are two more steps to make everything come together:
+
+1. Write the docstrings for each of the items we wish to document
+2. Use (make reference to) these items in the body of your API guide
+
+Docstring formats
+^^^^^^^^^^^^^^^^^
+There is not one **single**, widely agreed-upon format for writing docstrings in the Python community.
+Two of the most popular choices, and relevant for this workshop, are:
+
+`Sphinx format <https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html#the-sphinx-docstring-format>`_
+    Based on *reStructuredText (rst)*, this is the format understood by Sphinx *by default*, with no extension required.
+    It is somewhat standardadized, by `PEP287 <https://www.python.org/dev/peps/pep-0287/>`_
+
+`Numpydoc format <https://numpydoc.readthedocs.io/en/latest/format.html>`_
+    This is the docstring format used and recommended by *numpy*.
+    It is a bit more verbose and detailed, but very complete and readable in plain text.
+    To use it in conjunction with Sphinx we need to enable an extension (`full instructions <https://numpydoc.readthedocs.io/en/latest/install.html>`_).
+
+    Essentially, we must make sure the package ``numpydoc`` is installed (in our project's dev virtualenv, and declared in ``requirements-dev.txt``),
+    and we must add ``numpydoc`` to the list of extensions in Sphinx's ``conf.py`` file.
+
+Regardless of the format chosen, there are some guidelines you can follow about the *content* of your docstrings:
+
+* Include as much as possible information about the **types** and **expected domains** of arguments
+
+  * For example: for numeric arguments, are only positive, non-negative, or any sign OK?
+  * Describe what each argument **means** and how to obtain such values
+
+* Think about **what could possibly go wrong**
+
+  * Possible exceptions raised when nonsensical arguments given
+  * Here you can use ``doctests`` to give a few examples of corner cases (what works well, what doesn't)
+
+
+Referencing documented library items
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Now that you have correctly-formatted docstrings attached to code items in your library, the last step is to reference these items in the body of your API guide.
+To this end the ``autodoc`` extension of Sphinx provides several `directives <https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#directives>`_,
+the most important being:
+
+Directives for item with **members**
+    These are ``automodule::``, ``autoclass::`` and ``autoexception::``.
+    The argument is just the name of the item to be documented, and there are several options that can be passed on the line immediately below the directive.
+    The most important option is ``:members:``, which will direct Sphinx to *also* render at this place the docstring for each of the members (module functions, class methods).
+
+Directives for items without **members**
+    Among which ``autofunction``, ``automethod``, ``autodata``.
+    In particular, ``autodata`` can be useful to document constant values (the value will also be printed in the rendered docs).
+

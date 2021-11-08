@@ -1,0 +1,25 @@
+Software Testing basics
+=======================
+
+The Coderefinery project has given (in March 2021) a great workshop on software testing.
+Our focus is a bit different on the practical part, but for concepts and motivation,
+`their material <https://coderefinery.github.io/testing/>`_ is great.
+
+The material has an `open license <https://github.com/coderefinery/testing/blob/main/LICENSE>`_ and can thus be freely used
+as basis for derivative work. We just link directly to the sections we want here, because they are great as it is.
+
+* `Coderefinery's motivations for testing <https://coderefinery.github.io/testing/motivation/>`_
+* `Coderefinery's basic testing concepts <https://coderefinery.github.io/testing/concepts/>`_
+
+
+Before we meet online: Test design
+----------------------------------
+Besides the concepts and motivation, Coderefinery has a good section about **test design**.
+
+Since our workshop is based on hands-on tutoring, we ask you to read that section and try to apply the ideas to your project.
+Then on the online session we will follow up and discuss / help you with your problems.
+
+* `Coderefinery's section on test design <https://coderefinery.github.io/testing/test-design/>`_
+
+Maybe not all topics are applicable to your project (external dependencies, randomness), but try to apply those that are.
+

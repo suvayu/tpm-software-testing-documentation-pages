@@ -1,0 +1,252 @@
+Software documentation basics
+=============================
+
+Disclaimer: this section is unashamedly inspired by the
+`excelent beginner's guide to documentation <https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/>`_ written by the *writethedocs.org* community.
+The subsections and arguments come directly from it, with some small adjustments to fit what we think.
+
+We want to show you in this initial section:
+
+* Why documentation matters, and for whom
+* First steps on *how* to write it (simplest possible starting point)
+* What should you write about
+
+In the remote sessions of the workshop you will practice these ideas on your project.
+In the second in-person session we go into a bit more practical details of tooling and structure.
+
+
+Why writing documentation
+-------------------------
+
+To help your (future) self
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+First of all, you write documentation for yourself. More specifically, for your *future self*.
+Code you wrote 6 months ago is often indistinguishable from code that someone else has written.
+This happens for several reasons, among which:
+
+* For each small function, even single lines of code: there are **reasons** behind it
+* Programming involves making lots of **assumptions**
+
+  * Assumptions about what comes **into** to program and what comes **out** of it
+
+Documentation allows you to transfer the *why* behind code.
+
+Comments are an important subset of documentation, but not enough.
+Some concepts are better explained in prose (long form), not in a single or few lines.
+
+Special note for scientists: papers are great with explaining the *scientific grounds* behind your code,
+but you **still need real documentation**, for software-specific and non-scientific explanations.
+
+You want people to use your code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You (hopefully) want to make your piece of software public, because you think it may be useful for others.
+However, people need to understand why your code might be useful for them, before they decide to use it.
+Documentation tells people that this project is for them.
+
+    | If people don't know why your project exists,
+    | they won't use it.
+    | If people can't figure out how to install your code,
+    | they won't use it.
+    | If people can't figure out how to use your code,
+    | they won't use it.
+
+You want people to help out
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open source is this magical thing right? You release code, and the code gnomes come and make it better for you.
+
+Not quite.
+
+    | You only get contributions after you have put in a lot of work.
+    | You only get contributions after you have users.
+    | You only get contributions after you have documentation.
+
+Documentation also provides a platform for your first contributions. That means, you may start the docs,
+and then collaborators (maybe other researchers) see chances for improvement and can *help write (more) docs*.
+
+A lot of people have never contributed before, and documentation changes are a lot less scary than code changes.
+If you don't have documentation, you will miss out on a whole class of contributors.
+
+You want your code to be better
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+It's really easy to have an idea in your head that sounds perfect,
+but the act of putting words to paper requires a distillation of thought that may not be so easy.
+
+Writing documentation improves the design of your code.
+Talking through your API and design decisions on paper allows you to think about them in a more formalized way.
+A nice side effect is that it allows people to contribute code that follows your original intentions as well.
+
+
+Simple start to writing the docs
+--------------------------------
+
+Version controlled plain text
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As programmers we live in a world of plain text.
+Our documentation tooling should be no exception.
+We want tools that turn plain text into pretty HTML.
+We also have some of the best tooling available for tracking changes to files.
+Why would we forgo using those tools when writing documentation?
+This workflow is powerful, and familiar to developers.
+
+Markdown: readable by humans and rendered nicely
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Markdown is probably the simplest and most lightweight markup format around.
+
+::
+
+	Resources
+	---------
+
+	* Basic markdown syntax: https://www.markdownguide.org/basic-syntax/
+	* Github supports it too: https://github.github.com/gfm/
+
+This will render into a header, with a list underneath it.
+The URLs will be hyperlinked automatically.
+It's easy to write, still makes sense as plain text, and renders nicely into HTML.
+
+
+What to write
+-------------
+
+Now we're getting down to the brass tacks.
+Making sure that you give your users all the information that they need, but not too much.
+You can start with just a single file: ``README`` in the root of the repository, and later maybe expand.
+
+The first question you need to ask yourself is: who are you writing for?
+At first, you generally just need to appeal to two audiences:
+
+* Users
+* Developers
+
+Users are people who simply want to use your code, and don't care how it works.
+Developers are people who want to contribute back to your code.
+
+
+What problem your project solves
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A lot of people will come to your docs trying to figure out what exactly your project is.
+Someone will mention it, or they'll google a phrase randomly.
+You should explain what your project does and why it exists. Fabric_ does a great job of this.
+
+.. _Fabric: http://docs.fabfile.org/
+
+A small code example
+^^^^^^^^^^^^^^^^^^^^
+Show a telling example of what your project would normally be used for.
+Requests_ does a great example of this.
+
+.. _Requests: https://requests.kennethreitz.org/en/master/
+
+
+A link to your code & issue tracker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+People like to browse the code sometimes. They might be interested in filing bugs against the code for issues they've found.
+Make it really easy for people who want to contribute back to the project in any way possible.
+I think the `Python Guide`_ does a good job with the link to the code portion.
+
+.. _Python Guide: http://docs.python-guide.org/en/latest/index.html
+
+
+Frequently Asked Questions (FAQ)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A lot of people have the same problems.
+If things happen all the time, you should probably fix your documentation or the code, so that the problems go away.
+However, there are always questions that get asked about your project, things that can't be changed, etc.
+Document those, and **keep it up to date**.
+FAQs are generally out of date, but when done well, they are a golden resource.
+Tastypie_ did a great job with this, with their "Cookbook" concept.
+
+.. _Tastypie: http://django-tastypie.readthedocs.org/en/latest/cookbook.html
+
+
+How to get support
+^^^^^^^^^^^^^^^^^^
+Mailing list? IRC Channel? Document how to get help and interact with the community around a project.
+Django_ does a great job with this.
+
+.. _Django: https://docs.djangoproject.com/en/1.8/faq/help
+
+
+Information for people who want to contribute back
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+People usually have standards for how they expect things to be done in their projects.
+You should document these so that if people write code, they can do things in the norm of the project.
+`Open Comparison`_ does a great job of this.
+
+.. _Open Comparison: https://packaginator.readthedocs.io/en/latest/contributing.html
+
+
+Installation instructions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Once people figure out whether they want to use your code or not, they need to know how to actually get it and make it run.
+Hopefully your install instructions should be a couple lines for the basic case.
+A page that gives more information and caveats should be linked from here if necessary.
+I think at `Read the Docs`_ we do a good job with this.
+
+.. _Read the Docs: http://read-the-docs.readthedocs.org/en/latest/install.html
+
+
+Your project's license
+^^^^^^^^^^^^^^^^^^^^^^
+BSD? MIT? GPL? This stuff might not matter to you, but the people who want to use your code will care about this a whole lot.
+Think about what you want to accomplish with your license, and please only pick one of the standard licenses that you see around the web.
+
+
+README Template
+---------------
+
+A simple template for you to start with, for your ``README``.
+Name the file ``README.md`` if you want to use markdown, or ``README.rst`` if you want to use reStructuredText.
+
+::
+
+	$project
+	========
+
+	$project will solve your problem of where to start with documentation,
+	by providing a basic explanation of how to do it easily.
+
+	Look how easy it is to use:
+
+	    import project
+	    # Get your stuff done
+	    project.do_stuff()
+
+	Features
+	--------
+
+	- Be awesome
+	- Make things faster
+
+	Installation
+	------------
+
+	Install $project by running:
+
+	    install project
+
+	Contribute
+	----------
+
+	- Issue Tracker: github.com/$project/$project/issues
+	- Source Code: github.com/$project/$project
+
+	Support
+	-------
+
+	If you are having issues, please let us know.
+	We have a mailing list located at: project@google-groups.com
+
+	License
+	-------
+
+	The project is licensed under the BSD license.
+
+
+Next Steps
+----------
+After you follow the above guide, we know your project will be successful!
+For further reading, check out this post on `how to maintain an open source project`_.
+
+.. _how to maintain an open source project: https://medium.com/p/aaa2a5437d3a
+

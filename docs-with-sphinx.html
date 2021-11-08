@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing documentation with Sphinx &mdash; workshop-tpm-sw-testing-doc  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Software Testing and Documentation Workshop" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> workshop-tpm-sw-testing-doc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Writing documentation with Sphinx</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-sphinx-for-a-project">Installing Sphinx for a project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-pages-usage-install-guides">Simple pages: usage/install guides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-docs-from-comments">API docs from comments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docstring-formats">Docstring formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencing-documented-library-items">Referencing documented library items</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">workshop-tpm-sw-testing-doc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Writing documentation with Sphinx</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/docs-with-sphinx.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-documentation-with-sphinx">
+<h1>Writing documentation with Sphinx<a class="headerlink" href="#writing-documentation-with-sphinx" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://www.sphinx-doc.org">Sphinx</a> is a <em>documentation generator</em>, i.e.,
+a tool that takes a set of plain text source files and can produce various output formats (e.g. HTML, LaTeX),
+while automatically producing cross-references, indices, tables, etc.</p>
+<p>In this workshop, we will focus on using Sphinx to produce documentation in the form of webpages (HTML).
+We will use reStructuredText (.rst) as the input format, which is the default and most commonly used.</p>
+<p>Sphinx is “Python-based”, in the sense that it is:</p>
+<ul class="simple">
+<li><p>Written in Python</p></li>
+<li><p><strong>Configurable</strong> in Python</p></li>
+<li><p>Easily <em>aware</em> of Python-specific features (syntax, etc.)</p></li>
+</ul>
+<p>Therefore Sphinx is very popular for generating the documentation of Python projects, and this is why we use it in this workshop.
+But of course it can just be used as a way to build documentation for any project.</p>
+<p>We will learn the basics of using Sphinx for writing two sorts of documentation:</p>
+<ul class="simple">
+<li><p>Usage/installation guides</p></li>
+<li><p>API documentation</p></li>
+</ul>
+<section id="installing-sphinx-for-a-project">
+<h3>Installing Sphinx for a project<a class="headerlink" href="#installing-sphinx-for-a-project" title="Permalink to this headline"></a></h3>
+<p>As always, it is recommended to install all libraries and tools related to a Python project in a <em>virtual environment</em> exclusive to that project.
+Furthermore, it’s useful to separate between the dependencies that are needed to simply <strong>run</strong> a project, and those needed to <strong>develop</strong> it.
+The documentation generator (Sphinx) is a development dependency.</p>
+<p>In this workshop, we manage virtual environments simply with the built-in <code class="docutils literal notranslate"><span class="pre">venv</span></code> module from Python 3,
+and we declare our dependencies as <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> files, that are passed to <code class="docutils literal notranslate"><span class="pre">pip</span></code> (running in the active virtual env).
+What it boils down to in practice is that we need at least two requirements files in the project root:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> for the <em>runtime</em> dependencies (what is needed to run the program/library)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code> for the <em>development</em> dependencies (among other things, to build documentation)</p></li>
+</ul>
+<p>Besides the basic Sphinx package, we also use the very popular <a class="reference external" href="https://github.com/readthedocs/sphinx_rtd_theme">“Read The Docs” theme</a>.</p>
+<p>To make use of Sphinx for building documentation in a project, follow these steps:</p>
+<ol class="arabic">
+<li><p>Copy the <a class="reference download internal" download="" href="_downloads/7bede8e09e821da1895ad1b22175b8ea/requirements-dev.txt"><code class="xref download docutils literal notranslate"><span class="pre">example</span> <span class="pre">requirements-dev</span> <span class="pre">file</span></code></a> to the root of your project folder</p></li>
+<li><p>Create a fresh virtual environment dedicated for building docs of that project. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m venv ~/.virtualenvs/my-project-docs
+</pre></div>
+</div>
+</li>
+<li><p>Activate this new virtual environment and install the requirements with <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;my-project-root-path&gt;
+bash
+<span class="nb">source</span> ~/.virtualenvs/my-project-docs/bin/activate
+pip install -r requirements-dev.txt
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="simple-pages-usage-install-guides">
+<h2>Simple pages: usage/install guides<a class="headerlink" href="#simple-pages-usage-install-guides" title="Permalink to this headline"></a></h2>
+<p>Every software project should have <strong>at least</strong> some sort of instructions on how to install it or set it up.
+For example, you may tell your users to just obtain your package using pip (Python),
+or to download from a (private) repository (Linux).</p>
+<p>Furthermore it is always useful to have instructions on how to set up the <strong>development environment</strong>,
+in case someone else wants to <strong>contribute</strong> to your project. This may involve writing down:</p>
+<ul class="simple">
+<li><p>Which dependency management tool you used (for Python: pure pip, conda, poetry, etc.)</p></li>
+<li><p>What (external) dependencies are needed for developing the project and how to install them</p></li>
+<li><p>How to run the project’s tests and how to build the projects docs</p></li>
+</ul>
+<p>Software packaging and setting up reproducible development environments is a topic that deserves a workshop on its own,
+so here we only give short and simple examples of how you could write this type of documentation,
+and you can apply it to your own work.</p>
+<p>We recommend having <em>separate</em> source code and documentation <em>subdirectories</em> under the root of your project, like so:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;project-root&gt;
+  src/
+  tests/
+  docs/
+  requirements.txt
+  requirements-dev.txt
+</pre></div>
+</div>
+<p>Inside this <code class="docutils literal notranslate"><span class="pre">docs</span></code> subdirectory, we can the nice <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> command to create a skeleton configuration file
+and skeleton directory structure by asking us some questions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> docs/
+sphinx-quickstart
+<span class="c1"># answer the questions asked...</span>
+make html
+</pre></div>
+</div>
+<p>When asked whether you want to separate <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">build</span></code> directories, say yes.
+Then we can easily ensure that the built documentation will stay out of version control (never version-control generated artifacts).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;build/&quot;</span> &gt;&gt; .gitignore
+</pre></div>
+</div>
+<p>If you wish to use the popular <em>“Read the Docs”</em> theme in your pages, adjust the newly-created <code class="docutils literal notranslate"><span class="pre">source/conf.py</span></code> file to contain the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+</pre></div>
+</div>
+<p>Because we typed <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>, we can now access the documentation of the project by browsing the file <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code>,
+but of course it’s pretty empty… Now the real work can begin, describe what your project does, how to install/run it,
+and how to contribute to it (development environment and contribution guidelines).</p>
+<p>As a starting point, we can use the <span class="xref std std-ref">example usage/install documentation</span> we discussed in the previous section.</p>
+</section>
+<section id="api-docs-from-comments">
+<h2>API docs from comments<a class="headerlink" href="#api-docs-from-comments" title="Permalink to this headline"></a></h2>
+<p>One kind of documentation which is made <em>much more convenient</em> by tools like Sphinx is <a class="reference external" href="https://en.wikipedia.org/wiki/API">API</a> documentation.
+This is documentation that comes together with a software library and teaches the <em>users of the library (other programmers)</em> how to use it.
+The <strong>interface</strong> of a library is made of definitions that can be imported and are visible to the outside world, such as:</p>
+<ul class="simple">
+<li><p>(Public) functions</p></li>
+<li><p>Classes and other types (enums, typed dicts, etc.)</p></li>
+<li><p>Constant values</p></li>
+</ul>
+<p>We must document all of these relevant interface items, and ensure that the <em>latest documentation matches the latest code</em>.
+If we <strong>keep definitions together with their respective documentation</strong>, then we are <strong>less likely to forget updating</strong> one when updating the other.</p>
+<p>Sphinx can help us build API docs from comments placed near (above/below) definitions of functions, classes, modules, etc.
+To achive this, we use the <code class="docutils literal notranslate"><span class="pre">autodoc</span></code> extension (<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#module-sphinx.ext.autodoc">full documentation</a>).
+The first step is to enable the extension in our <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;sphinx.ext.autodoc&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>When we run Sphinx with <code class="docutils literal notranslate"><span class="pre">autodoc</span></code> enabled, and if finds references to items (functions, classes, etc.), it will try to <strong>import</strong> those items.
+Thus we need to add the appropriate directories to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.
+For example, if you follow the project directory structure suggested above (with <code class="docutils literal notranslate"><span class="pre">doc</span></code> and <code class="docutils literal notranslate"><span class="pre">src</span></code> folders),
+you can add the source folder to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> by having the following code on the top of <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> (we use the very nice <code class="docutils literal notranslate"><span class="pre">pathlib</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">projroot</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>  <span class="c1"># &lt;this_file&gt;/../../../</span>
+<span class="n">srcdir</span> <span class="o">=</span> <span class="n">projroot</span> <span class="o">/</span> <span class="s1">&#39;src&#39;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">srcdir</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>After this setup, there are two more steps to make everything come together:</p>
+<ol class="arabic simple">
+<li><p>Write the docstrings for each of the items we wish to document</p></li>
+<li><p>Use (make reference to) these items in the body of your API guide</p></li>
+</ol>
+<section id="docstring-formats">
+<h3>Docstring formats<a class="headerlink" href="#docstring-formats" title="Permalink to this headline"></a></h3>
+<p>There is not one <strong>single</strong>, widely agreed-upon format for writing docstrings in the Python community.
+Two of the most popular choices, and relevant for this workshop, are:</p>
+<dl>
+<dt><a class="reference external" href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html#the-sphinx-docstring-format">Sphinx format</a></dt><dd><p>Based on <em>reStructuredText (rst)</em>, this is the format understood by Sphinx <em>by default</em>, with no extension required.
+It is somewhat standardadized, by <a class="reference external" href="https://www.python.org/dev/peps/pep-0287/">PEP287</a></p>
+</dd>
+<dt><a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">Numpydoc format</a></dt><dd><p>This is the docstring format used and recommended by <em>numpy</em>.
+It is a bit more verbose and detailed, but very complete and readable in plain text.
+To use it in conjunction with Sphinx we need to enable an extension (<a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/install.html">full instructions</a>).</p>
+<p>Essentially, we must make sure the package <code class="docutils literal notranslate"><span class="pre">numpydoc</span></code> is installed (in our project’s dev virtualenv, and declared in <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>),
+and we must add <code class="docutils literal notranslate"><span class="pre">numpydoc</span></code> to the list of extensions in Sphinx’s <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file.</p>
+</dd>
+</dl>
+<p>Regardless of the format chosen, there are some guidelines you can follow about the <em>content</em> of your docstrings:</p>
+<ul class="simple">
+<li><p>Include as much as possible information about the <strong>types</strong> and <strong>expected domains</strong> of arguments</p>
+<ul>
+<li><p>For example: for numeric arguments, are only positive, non-negative, or any sign OK?</p></li>
+<li><p>Describe what each argument <strong>means</strong> and how to obtain such values</p></li>
+</ul>
+</li>
+<li><p>Think about <strong>what could possibly go wrong</strong></p>
+<ul>
+<li><p>Possible exceptions raised when nonsensical arguments given</p></li>
+<li><p>Here you can use <code class="docutils literal notranslate"><span class="pre">doctests</span></code> to give a few examples of corner cases (what works well, what doesn’t)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="referencing-documented-library-items">
+<h3>Referencing documented library items<a class="headerlink" href="#referencing-documented-library-items" title="Permalink to this headline"></a></h3>
+<p>Now that you have correctly-formatted docstrings attached to code items in your library, the last step is to reference these items in the body of your API guide.
+To this end the <code class="docutils literal notranslate"><span class="pre">autodoc</span></code> extension of Sphinx provides several <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#directives">directives</a>,
+the most important being:</p>
+<dl class="simple">
+<dt>Directives for item with <strong>members</strong></dt><dd><p>These are <code class="docutils literal notranslate"><span class="pre">automodule::</span></code>, <code class="docutils literal notranslate"><span class="pre">autoclass::</span></code> and <code class="docutils literal notranslate"><span class="pre">autoexception::</span></code>.
+The argument is just the name of the item to be documented, and there are several options that can be passed on the line immediately below the directive.
+The most important option is <code class="docutils literal notranslate"><span class="pre">:members:</span></code>, which will direct Sphinx to <em>also</em> render at this place the docstring for each of the members (module functions, class methods).</p>
+</dd>
+<dt>Directives for items without <strong>members</strong></dt><dd><p>Among which <code class="docutils literal notranslate"><span class="pre">autofunction</span></code>, <code class="docutils literal notranslate"><span class="pre">automethod</span></code>, <code class="docutils literal notranslate"><span class="pre">autodata</span></code>.
+In particular, <code class="docutils literal notranslate"><span class="pre">autodata</span></code> can be useful to document constant values (the value will also be printed in the rendered docs).</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Software Testing and Documentation Workshop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, João Pizani Flor, Suvayu Ali.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
