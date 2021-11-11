@@ -185,6 +185,52 @@ I think at `Read the Docs`_ we do a good job with this.
 
 .. _Read the Docs: http://read-the-docs.readthedocs.org/en/latest/install.html
 
+Additional notes about Python
++++++++++++++++++++++++++++++
+
+In the python ecosystem there are several ways to setup your package
+to make them installable.  Here we will pick ``setuptools`` as that is
+the most widespread and established backend.  You can include the
+package requirements in a ``requirements.txt`` file, and write a
+``setup.py`` that reads it and uses ``setuptools`` to setup the
+package::
+
+  .
+  ├── requirements.txt
+  └── setup.py
+
+``setup.py`` can look something like this::
+
+  from pathlib import Path
+  
+  from setuptools import setup, find_packages
+  
+  requirements = Path("requirements.txt").read_text().strip().split("\n")
+  
+  setup(
+      name="mypkg",
+      version="0.1.dev",
+      description="bla bla bla",
+      long_description=Path("README.md").read_text(),
+      long_description_content_type="text/markdown",
+      url="https://gitlab.com/user/mypkg",
+      packages=find_packages(exclude=["doc", "tests", "tmp"]),
+      install_requires=requirements,
+  )
+
+Now your installation documentation can have two targetted audiences:
+
+- Users who will use your library, and probably will not make changes
+  to it.  They can install your package like this::
+
+    $ pip install .
+
+- However a more involved user (maybe a collaborator), might want to
+  work on the same source code.  They (and you!) can install the
+  package in `editable` mode like this::
+
+    $ pip install -e .
+
 
 Your project's license
 ^^^^^^^^^^^^^^^^^^^^^^
