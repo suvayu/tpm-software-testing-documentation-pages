@@ -11,6 +11,8 @@ as basis for derivative work. We just link directly to the sections we want here
 * `Coderefinery's motivations for testing <https://coderefinery.github.io/testing/motivation/>`_
 * `Coderefinery's basic testing concepts <https://coderefinery.github.io/testing/concepts/>`_
 
+* `Types of tests: unit, integration, regression <https://coderefinery.github.io/testing/concepts/#unit-tests>`_
+
 
 Before we meet online: Test design
 ----------------------------------

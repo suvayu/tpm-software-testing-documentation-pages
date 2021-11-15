@@ -1,72 +1,33 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Writing documentation with Sphinx &mdash; workshop-tpm-sw-testing-doc  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Software Testing basics" href="testing-basics.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> workshop-tpm-sw-testing-doc
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -74,18 +35,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="docs-basics.html">Software documentation basics</a></li>
@@ -99,81 +49,41 @@
 <li class="toctree-l2"><a class="reference internal" href="#api-docs-from-comments">API docs from comments</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#docstring-formats">Docstring formats</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#referencing-documented-library-items">Referencing documented library items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-of-project-with-sphinx-api-docs">Example of project with Sphinx API docs</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">workshop-tpm-sw-testing-doc</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Writing documentation with Sphinx</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/docs-with-sphinx.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="writing-documentation-with-sphinx">
-<h1>Writing documentation with Sphinx<a class="headerlink" href="#writing-documentation-with-sphinx" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="writing-documentation-with-sphinx">
+<h1>Writing documentation with Sphinx<a class="headerlink" href="#writing-documentation-with-sphinx" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
 <p><a class="reference external" href="https://www.sphinx-doc.org">Sphinx</a> is a <em>documentation generator</em>, i.e.,
 a tool that takes a set of plain text source files and can produce various output formats (e.g. HTML, LaTeX),
 while automatically producing cross-references, indices, tables, etc.</p>
@@ -192,8 +102,8 @@ But of course it can just be used as a way to build documentation for any projec
 <li><p>Usage/installation guides</p></li>
 <li><p>API documentation</p></li>
 </ul>
-<div class="section" id="installing-sphinx-for-a-project">
-<h3>Installing Sphinx for a project<a class="headerlink" href="#installing-sphinx-for-a-project" title="Permalink to this headline">¶</a></h3>
+<section id="installing-sphinx-for-a-project">
+<h3>Installing Sphinx for a project<a class="headerlink" href="#installing-sphinx-for-a-project" title="Permalink to this headline"></a></h3>
 <p>As always, it is recommended to install all libraries and tools related to a Python project in a <em>virtual environment</em> exclusive to that project.
 Furthermore, it’s useful to separate between the dependencies that are needed to simply <strong>run</strong> a project, and those needed to <strong>develop</strong> it.
 The documentation generator (Sphinx) is a development dependency.</p>
@@ -222,10 +132,10 @@ pip install -r requirements-dev.txt
 </div>
 </li>
 </ol>
-</div>
-</div>
-<div class="section" id="simple-pages-usage-install-guides">
-<h2>Simple pages: usage/install guides<a class="headerlink" href="#simple-pages-usage-install-guides" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="simple-pages-usage-install-guides">
+<h2>Simple pages: usage/install guides<a class="headerlink" href="#simple-pages-usage-install-guides" title="Permalink to this headline"></a></h2>
 <p>Every software project should have <strong>at least</strong> some sort of instructions on how to install it or set it up.
 For example, you may tell your users to just obtain your package using pip (Python),
 or to download from a (private) repository (Linux).</p>
@@ -274,9 +184,9 @@ Then we can easily ensure that the built documentation will stay out of version 
 but of course it’s pretty empty… Now the real work can begin, describe what your project does, how to install/run it,
 and how to contribute to it (development environment and contribution guidelines).</p>
 <p>As a starting point, we can use the <span class="xref std std-ref">example usage/install documentation</span> we discussed in the previous section.</p>
-</div>
-<div class="section" id="api-docs-from-comments">
-<h2>API docs from comments<a class="headerlink" href="#api-docs-from-comments" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="api-docs-from-comments">
+<h2>API docs from comments<a class="headerlink" href="#api-docs-from-comments" title="Permalink to this headline"></a></h2>
 <p>One kind of documentation which is made <em>much more convenient</em> by tools like Sphinx is <a class="reference external" href="https://en.wikipedia.org/wiki/API">API</a> documentation.
 This is documentation that comes together with a software library and teaches the <em>users of the library (other programmers)</em> how to use it.
 The <strong>interface</strong> of a library is made of definitions that can be imported and are visible to the outside world, such as:</p>
@@ -313,8 +223,8 @@ you can add the source folder to <code class="docutils literal notranslate"><spa
 <li><p>Write the docstrings for each of the items we wish to document</p></li>
 <li><p>Use (make reference to) these items in the body of your API guide</p></li>
 </ol>
-<div class="section" id="docstring-formats">
-<h3>Docstring formats<a class="headerlink" href="#docstring-formats" title="Permalink to this headline">¶</a></h3>
+<section id="docstring-formats">
+<h3>Docstring formats<a class="headerlink" href="#docstring-formats" title="Permalink to this headline"></a></h3>
 <p>There is not one <strong>single</strong>, widely agreed-upon format for writing docstrings in the Python community.
 Two of the most popular choices, and relevant for this workshop, are:</p>
 <dl>
@@ -343,9 +253,9 @@ and we must add <code class="docutils literal notranslate"><span class="pre">num
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="referencing-documented-library-items">
-<h3>Referencing documented library items<a class="headerlink" href="#referencing-documented-library-items" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="referencing-documented-library-items">
+<h3>Referencing documented library items<a class="headerlink" href="#referencing-documented-library-items" title="Permalink to this headline"></a></h3>
 <p>Now that you have correctly-formatted docstrings attached to code items in your library, the last step is to reference these items in the body of your API guide.
 To this end the <code class="docutils literal notranslate"><span class="pre">autodoc</span></code> extension of Sphinx provides several <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#directives">directives</a>,
 the most important being:</p>
@@ -358,55 +268,43 @@ The most important option is <code class="docutils literal notranslate"><span cl
 In particular, <code class="docutils literal notranslate"><span class="pre">autodata</span></code> can be useful to document constant values (the value will also be printed in the rendered docs).</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
+</section>
+<section id="example-of-project-with-sphinx-api-docs">
+<h3>Example of project with Sphinx API docs<a class="headerlink" href="#example-of-project-with-sphinx-api-docs" title="Permalink to this headline"></a></h3>
+<p>The <a class="reference external" href="https://github.com/concoctions/BlackBlox">BlackBlox project</a>, from Samantha Tanzer (ESS dept., E&amp;I group)
+is a good example of usage of Sphinx as a tool for building both “conceptual prose” documentation and API docs.</p>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="testing-basics.html" class="btn btn-neutral float-left" title="Software Testing basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, João Pizani Flor, Suvayu Ali.
-
-    </p>
+    <p>&#169; Copyright 2021, João Pizani Flor, Suvayu Ali.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -209,3 +209,10 @@ Directives for items without **members**
     Among which ``autofunction``, ``automethod``, ``autodata``.
     In particular, ``autodata`` can be useful to document constant values (the value will also be printed in the rendered docs).
 
+
+Example of project with Sphinx API docs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The `BlackBlox project <https://github.com/concoctions/BlackBlox>`_, from Samantha Tanzer (ESS dept., E&I group)
+is a good example of usage of Sphinx as a tool for building both "conceptual prose" documentation and API docs.
+

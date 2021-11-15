@@ -1,73 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Software documentation basics &mdash; workshop-tpm-sw-testing-doc  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Software Testing basics" href="testing-basics.html" />
     <link rel="prev" title="Software Testing and Documentation Workshop" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> workshop-tpm-sw-testing-doc
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,18 +36,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Software documentation basics</a><ul>
@@ -124,73 +74,32 @@
 <li class="toctree-l1"><a class="reference internal" href="docs-with-sphinx.html">Writing documentation with Sphinx</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">workshop-tpm-sw-testing-doc</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Software documentation basics</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/docs-basics.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="software-documentation-basics">
-<h1>Software documentation basics<a class="headerlink" href="#software-documentation-basics" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="software-documentation-basics">
+<h1>Software documentation basics<a class="headerlink" href="#software-documentation-basics" title="Permalink to this headline"></a></h1>
 <p>Disclaimer: this section is unashamedly inspired by the
 <a class="reference external" href="https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/">excelent beginner’s guide to documentation</a> written by the <em>writethedocs.org</em> community.
 The subsections and arguments come directly from it, with some small adjustments to fit what we think.</p>
@@ -202,10 +111,10 @@ The subsections and arguments come directly from it, with some small adjustments
 </ul>
 <p>In the remote sessions of the workshop you will practice these ideas on your project.
 In the second in-person session we go into a bit more practical details of tooling and structure.</p>
-<div class="section" id="why-writing-documentation">
-<h2>Why writing documentation<a class="headerlink" href="#why-writing-documentation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="to-help-your-future-self">
-<h3>To help your (future) self<a class="headerlink" href="#to-help-your-future-self" title="Permalink to this headline">¶</a></h3>
+<section id="why-writing-documentation">
+<h2>Why writing documentation<a class="headerlink" href="#why-writing-documentation" title="Permalink to this headline"></a></h2>
+<section id="to-help-your-future-self">
+<h3>To help your (future) self<a class="headerlink" href="#to-help-your-future-self" title="Permalink to this headline"></a></h3>
 <p>First of all, you write documentation for yourself. More specifically, for your <em>future self</em>.
 Code you wrote 6 months ago is often indistinguishable from code that someone else has written.
 This happens for several reasons, among which:</p>
@@ -222,9 +131,9 @@ This happens for several reasons, among which:</p>
 Some concepts are better explained in prose (long form), not in a single or few lines.</p>
 <p>Special note for scientists: papers are great with explaining the <em>scientific grounds</em> behind your code,
 but you <strong>still need real documentation</strong>, for software-specific and non-scientific explanations.</p>
-</div>
-<div class="section" id="you-want-people-to-use-your-code">
-<h3>You want people to use your code<a class="headerlink" href="#you-want-people-to-use-your-code" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="you-want-people-to-use-your-code">
+<h3>You want people to use your code<a class="headerlink" href="#you-want-people-to-use-your-code" title="Permalink to this headline"></a></h3>
 <p>You (hopefully) want to make your piece of software public, because you think it may be useful for others.
 However, people need to understand why your code might be useful for them, before they decide to use it.
 Documentation tells people that this project is for them.</p>
@@ -238,9 +147,9 @@ Documentation tells people that this project is for them.</p>
 <div class="line">they won’t use it.</div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="you-want-people-to-help-out">
-<h3>You want people to help out<a class="headerlink" href="#you-want-people-to-help-out" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="you-want-people-to-help-out">
+<h3>You want people to help out<a class="headerlink" href="#you-want-people-to-help-out" title="Permalink to this headline"></a></h3>
 <p>Open source is this magical thing right? You release code, and the code gnomes come and make it better for you.</p>
 <p>Not quite.</p>
 <blockquote>
@@ -254,29 +163,29 @@ Documentation tells people that this project is for them.</p>
 and then collaborators (maybe other researchers) see chances for improvement and can <em>help write (more) docs</em>.</p>
 <p>A lot of people have never contributed before, and documentation changes are a lot less scary than code changes.
 If you don’t have documentation, you will miss out on a whole class of contributors.</p>
-</div>
-<div class="section" id="you-want-your-code-to-be-better">
-<h3>You want your code to be better<a class="headerlink" href="#you-want-your-code-to-be-better" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="you-want-your-code-to-be-better">
+<h3>You want your code to be better<a class="headerlink" href="#you-want-your-code-to-be-better" title="Permalink to this headline"></a></h3>
 <p>It’s really easy to have an idea in your head that sounds perfect,
 but the act of putting words to paper requires a distillation of thought that may not be so easy.</p>
 <p>Writing documentation improves the design of your code.
 Talking through your API and design decisions on paper allows you to think about them in a more formalized way.
 A nice side effect is that it allows people to contribute code that follows your original intentions as well.</p>
-</div>
-</div>
-<div class="section" id="simple-start-to-writing-the-docs">
-<h2>Simple start to writing the docs<a class="headerlink" href="#simple-start-to-writing-the-docs" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="version-controlled-plain-text">
-<h3>Version controlled plain text<a class="headerlink" href="#version-controlled-plain-text" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="simple-start-to-writing-the-docs">
+<h2>Simple start to writing the docs<a class="headerlink" href="#simple-start-to-writing-the-docs" title="Permalink to this headline"></a></h2>
+<section id="version-controlled-plain-text">
+<h3>Version controlled plain text<a class="headerlink" href="#version-controlled-plain-text" title="Permalink to this headline"></a></h3>
 <p>As programmers we live in a world of plain text.
 Our documentation tooling should be no exception.
 We want tools that turn plain text into pretty HTML.
 We also have some of the best tooling available for tracking changes to files.
 Why would we forgo using those tools when writing documentation?
 This workflow is powerful, and familiar to developers.</p>
-</div>
-<div class="section" id="markdown-readable-by-humans-and-rendered-nicely">
-<h3>Markdown: readable by humans and rendered nicely<a class="headerlink" href="#markdown-readable-by-humans-and-rendered-nicely" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="markdown-readable-by-humans-and-rendered-nicely">
+<h3>Markdown: readable by humans and rendered nicely<a class="headerlink" href="#markdown-readable-by-humans-and-rendered-nicely" title="Permalink to this headline"></a></h3>
 <p>Markdown is probably the simplest and most lightweight markup format around.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Resources</span>
 <span class="o">---------</span>
@@ -288,10 +197,10 @@ This workflow is powerful, and familiar to developers.</p>
 <p>This will render into a header, with a list underneath it.
 The URLs will be hyperlinked automatically.
 It’s easy to write, still makes sense as plain text, and renders nicely into HTML.</p>
-</div>
-</div>
-<div class="section" id="what-to-write">
-<h2>What to write<a class="headerlink" href="#what-to-write" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="what-to-write">
+<h2>What to write<a class="headerlink" href="#what-to-write" title="Permalink to this headline"></a></h2>
 <p>Now we’re getting down to the brass tacks.
 Making sure that you give your users all the information that they need, but not too much.
 You can start with just a single file: <code class="docutils literal notranslate"><span class="pre">README</span></code> in the root of the repository, and later maybe expand.</p>
@@ -303,51 +212,51 @@ At first, you generally just need to appeal to two audiences:</p>
 </ul>
 <p>Users are people who simply want to use your code, and don’t care how it works.
 Developers are people who want to contribute back to your code.</p>
-<div class="section" id="what-problem-your-project-solves">
-<h3>What problem your project solves<a class="headerlink" href="#what-problem-your-project-solves" title="Permalink to this headline">¶</a></h3>
+<section id="what-problem-your-project-solves">
+<h3>What problem your project solves<a class="headerlink" href="#what-problem-your-project-solves" title="Permalink to this headline"></a></h3>
 <p>A lot of people will come to your docs trying to figure out what exactly your project is.
 Someone will mention it, or they’ll google a phrase randomly.
 You should explain what your project does and why it exists. <a class="reference external" href="http://docs.fabfile.org/">Fabric</a> does a great job of this.</p>
-</div>
-<div class="section" id="a-small-code-example">
-<h3>A small code example<a class="headerlink" href="#a-small-code-example" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="a-small-code-example">
+<h3>A small code example<a class="headerlink" href="#a-small-code-example" title="Permalink to this headline"></a></h3>
 <p>Show a telling example of what your project would normally be used for.
 <a class="reference external" href="https://requests.kennethreitz.org/en/master/">Requests</a> does a great example of this.</p>
-</div>
-<div class="section" id="a-link-to-your-code-issue-tracker">
-<h3>A link to your code &amp; issue tracker<a class="headerlink" href="#a-link-to-your-code-issue-tracker" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="a-link-to-your-code-issue-tracker">
+<h3>A link to your code &amp; issue tracker<a class="headerlink" href="#a-link-to-your-code-issue-tracker" title="Permalink to this headline"></a></h3>
 <p>People like to browse the code sometimes. They might be interested in filing bugs against the code for issues they’ve found.
 Make it really easy for people who want to contribute back to the project in any way possible.
 I think the <a class="reference external" href="http://docs.python-guide.org/en/latest/index.html">Python Guide</a> does a good job with the link to the code portion.</p>
-</div>
-<div class="section" id="frequently-asked-questions-faq">
-<h3>Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="frequently-asked-questions-faq">
+<h3>Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permalink to this headline"></a></h3>
 <p>A lot of people have the same problems.
 If things happen all the time, you should probably fix your documentation or the code, so that the problems go away.
 However, there are always questions that get asked about your project, things that can’t be changed, etc.
 Document those, and <strong>keep it up to date</strong>.
 FAQs are generally out of date, but when done well, they are a golden resource.
 <a class="reference external" href="http://django-tastypie.readthedocs.org/en/latest/cookbook.html">Tastypie</a> did a great job with this, with their “Cookbook” concept.</p>
-</div>
-<div class="section" id="how-to-get-support">
-<h3>How to get support<a class="headerlink" href="#how-to-get-support" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="how-to-get-support">
+<h3>How to get support<a class="headerlink" href="#how-to-get-support" title="Permalink to this headline"></a></h3>
 <p>Mailing list? IRC Channel? Document how to get help and interact with the community around a project.
 <a class="reference external" href="https://docs.djangoproject.com/en/1.8/faq/help">Django</a> does a great job with this.</p>
-</div>
-<div class="section" id="information-for-people-who-want-to-contribute-back">
-<h3>Information for people who want to contribute back<a class="headerlink" href="#information-for-people-who-want-to-contribute-back" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="information-for-people-who-want-to-contribute-back">
+<h3>Information for people who want to contribute back<a class="headerlink" href="#information-for-people-who-want-to-contribute-back" title="Permalink to this headline"></a></h3>
 <p>People usually have standards for how they expect things to be done in their projects.
 You should document these so that if people write code, they can do things in the norm of the project.
 <a class="reference external" href="https://packaginator.readthedocs.io/en/latest/contributing.html">Open Comparison</a> does a great job of this.</p>
-</div>
-<div class="section" id="installation-instructions">
-<h3>Installation instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="installation-instructions">
+<h3>Installation instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline"></a></h3>
 <p>Once people figure out whether they want to use your code or not, they need to know how to actually get it and make it run.
 Hopefully your install instructions should be a couple lines for the basic case.
 A page that gives more information and caveats should be linked from here if necessary.
 I think at <a class="reference external" href="http://read-the-docs.readthedocs.org/en/latest/install.html">Read the Docs</a> we do a good job with this.</p>
-<div class="section" id="additional-notes-about-python">
-<h4>Additional notes about Python<a class="headerlink" href="#additional-notes-about-python" title="Permalink to this headline">¶</a></h4>
+<section id="additional-notes-about-python">
+<h4>Additional notes about Python<a class="headerlink" href="#additional-notes-about-python" title="Permalink to this headline"></a></h4>
 <p>In the python ecosystem there are several ways to setup your package
 to make them installable.  Here we will pick <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> as that is
 the most widespread and established backend.  You can include the
@@ -394,16 +303,16 @@ package in <cite>editable</cite> mode like this:</p>
 </div>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="your-project-s-license">
-<h3>Your project’s license<a class="headerlink" href="#your-project-s-license" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="your-project-s-license">
+<h3>Your project’s license<a class="headerlink" href="#your-project-s-license" title="Permalink to this headline"></a></h3>
 <p>BSD? MIT? GPL? This stuff might not matter to you, but the people who want to use your code will care about this a whole lot.
 Think about what you want to accomplish with your license, and please only pick one of the standard licenses that you see around the web.</p>
-</div>
-</div>
-<div class="section" id="readme-template">
-<h2>README Template<a class="headerlink" href="#readme-template" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="readme-template">
+<h2>README Template<a class="headerlink" href="#readme-template" title="Permalink to this headline"></a></h2>
 <p>A simple template for you to start with, for your <code class="docutils literal notranslate"><span class="pre">README</span></code>.
 Name the file <code class="docutils literal notranslate"><span class="pre">README.md</span></code> if you want to use markdown, or <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> if you want to use reStructuredText.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$project
@@ -449,60 +358,43 @@ License
 The project is licensed under the BSD license.
 </pre></div>
 </div>
-</div>
-<div class="section" id="next-steps">
-<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline"></a></h2>
 <p>After you follow the above guide, we know your project will be successful!
 For further reading, check out this post on <a class="reference external" href="https://medium.com/p/aaa2a5437d3a">how to maintain an open source project</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="testing-basics.html" class="btn btn-neutral float-right" title="Software Testing basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Software Testing and Documentation Workshop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="testing-basics.html" class="btn btn-neutral float-right" title="Software Testing basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, João Pizani Flor, Suvayu Ali.
-
-    </p>
+    <p>&#169; Copyright 2021, João Pizani Flor, Suvayu Ali.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
